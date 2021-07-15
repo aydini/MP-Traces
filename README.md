@@ -46,3 +46,31 @@ When the experiments are over, stop the packet capture with Ctrl+C, and extract 
 ```
 tshark -Tfields -e tcp.stream -e frame.time_epoch -e frame.len -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -E separator=',' -r "$outputFileName".pcap > "$outputFileName".csv
 ```
+Sample output:
+
+```
+0,1626370514.241841000,74,69.121.239.12,51586,192.86.139.64,80
+0,1626370514.241867000,74,192.86.139.64,80,69.121.239.12,51586
+0,1626370514.252236000,66,69.121.239.12,51586,192.86.139.64,80
+0,1626370514.253640000,257,69.121.239.12,51586,192.86.139.64,80
+```
+
+## Data analysis
+
+Assuming a file `test.csv`:
+
+```
+library(ggplot2)
+library(zoo)
+
+dat <- read.csv("test.csv", header=FALSE)
+names(dat) <- c("stream", "time", "size", "srcIP", "srcPort", "dstIP", "dstPort")
+
+# example: for stream 0, downlink traffic only
+dat0 <- dat[dat$stream==0 & dat$srcPort==80,]
+# create a "time difference" column
+dat0$timeDiff <- c(tail(dat0$time, -1) - head(dat0$time, -1), 0)
+
+# next step: compute a windowed sum of time and size columns
+# look into e.g. https://stackoverflow.com/q/46396417/3524528
+```
