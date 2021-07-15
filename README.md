@@ -9,11 +9,11 @@ Reserve a single InstaGENI node on any InstaGENI site, but when you reserve the 
 
 Find out the publicly routable "hostname" from the GENI Portal.
 
-On the InstaGENI node, install Apache:
+On the InstaGENI node, install Apache. Also install tshark for data analysis:
 
 ```
 sudo apt-get update
-sudo apt-get install -y apache2
+sudo apt-get install -y apache2 tshark
 ```
 
 Create a large file in the web server root directory:
