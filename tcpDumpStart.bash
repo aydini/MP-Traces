@@ -11,7 +11,8 @@ outputFileName="$folder/tcpdump.$linkType.$tcpCC.$fileSize.$d"
 #start trace collection
 #sudo tcpdump port 80  -i eth0 -n > $outputFileName
 
-sudo tcpdump port 80 -i $interface -n -w $outputFileName".pcap"
+# capture 14B Ethernet + 20B IP + 32B TCP headers only
+sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 
 #reading pcap file with tcpdump
 #sudo tcpdump -n -r $outputFileName".pcap"
