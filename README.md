@@ -34,7 +34,7 @@ cd MP-Traces
 
 Before starting a set of experiments start tcpdump at the webserver
 
-use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP)
+use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
 ```
 outputFileName=`date +%F`-`date +%T` 
 interface="eth0"
