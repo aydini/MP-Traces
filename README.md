@@ -30,6 +30,8 @@ cd MP-Traces
 ```
 
 
+## ilknur: add your Rspec here
+## ilknur: how to add extra disk space to rspec
 ## Capture packets
 
 Before starting a set of experiments start tcpdump at the webserver
@@ -40,6 +42,7 @@ outputFileName=`date +%F`-`date +%T`
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
+### add starting ss command  (collect whatever you can) on port 80 of the webserver, collact in an putput file
 
 While running experiments, keep track of the details of each trial.
 
