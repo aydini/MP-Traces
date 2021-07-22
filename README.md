@@ -30,7 +30,7 @@ cd MP-Traces
 ```
 
 
-## Capture packets at the webserver
+## Capture packets
 
 Before starting a set of experiments start tcpdump at the webserver
 
@@ -42,7 +42,13 @@ sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 
 While running experiments, keep track of the details of each trial.
 
-An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position are ade to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). Use a web browser or wget at the client device to connect to the web server.  
+An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
+
+Use a web browser or wget at the client device to connect to the web server.
+
+```
+wget  hostname/dataFile
+```  
  
 When the experiments are over, stop the packet capture at the web server with Ctrl+C, and extract data with:
 
