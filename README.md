@@ -44,7 +44,7 @@ While running experiments, keep track of the details of each trial.
 
 An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
 
-Use a web browser or wget at the client device to connect to the web server.
+Use a web browser or wget at the client device to connect to the web server such as below.
 
 ```
 wget  hostname/dataFile
