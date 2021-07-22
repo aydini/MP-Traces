@@ -37,6 +37,7 @@ Before starting a set of experiments start tcpdump at the webserver
 use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP)
 ```
 outputFileName=`date +%F`-`date +%T` 
+interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
 
