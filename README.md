@@ -16,7 +16,7 @@ sudo apt-get update
 sudo apt-get install -y apache2 tshark screen
 ```
 
-Create a large file in the web server root directory:
+Create a large data file in the web server root directory:
 
 ```
 sudo dd if=/dev/zero bs=512 count=2097152 of=/var/www/testFile.1GB
@@ -30,10 +30,11 @@ cd MP-Traces
 ```
 
 
-## Capture packets
+## Capture packets at the webserver
 
-Before starting a set of experiments,
+Before starting a set of experiments start tcpdump at the webserver
 
+use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP)
 ```
 outputFileName=`date +%F`-`date +%T` 
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
@@ -41,7 +42,9 @@ sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 
 While running experiments, keep track of the details of each trial.
 
-When the experiments are over, stop the packet capture with Ctrl+C, and extract data with:
+An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position are ade to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). Use a web browser or wget at the client device to connect to the web server.  
+ 
+When the experiments are over, stop the packet capture at the web server with Ctrl+C, and extract data with:
 
 ```
 tshark -Tfields -e tcp.stream -e frame.time_epoch -e frame.len -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -E separator=',' -r "$outputFileName".pcap > "$outputFileName".csv
