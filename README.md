@@ -52,15 +52,39 @@ cd MP-Traces
 
 ## Capture packets
 
-Before starting a set of experiments start tcpdump at the webserver
+Before starting a set of experiments start tcpdump and ss at the webserver:
 
-use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
+#### start tcpdump
+
+1) use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
+2) use ifconfig command to get the interface information for the public ip of the web server to set variable -i option. 
+```
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 199.109.64.50  netmask 255.255.255.0  broadcast 199.109.64.255
+        inet6 fe80::c1:b9ff:feac:13fa  prefixlen 64  scopeid 0x20<link>
+        ether 02:c1:b9:ac:13:fa  txqueuelen 1000  (Ethernet)
+        RX packets 451552  bytes 100124136 (100.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 453440  bytes 60142185 (60.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+Then start tcpdump as below.
+
 ```
 outputFileName=`date +%F`-`date +%T` 
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
-### ???update ??? add starting ss command  (collect whatever you can) on port 80 of the webserver, collect in an output file
+#### start ss collect whatever you can on port 80 of the webserver and save to an output file
 
 While running experiments, keep track of the details of each trial.
 
