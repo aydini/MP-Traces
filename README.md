@@ -5,7 +5,7 @@ Repository by Ilknur
 ## Set up a webserver
 
 Reserve a single InstaGENI node as a Xen VM on any InstaGENI site, but when you reserve the resource make sure 
-1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal.)
+1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal by following Aggregates menu item  and then Resource Details)
 2) to request additional disk space of 100 GB in the Request RSpec using 
 ```
 <emulab:xen cores="2" ram="8192" disk="100"/>
@@ -42,10 +42,10 @@ sudo apt-get update
 sudo apt-get install -y apache2 tshark screen
 ```
 
-Create a large data file in the web server root directory:
+Create a large data file in the web server root directory (/var/www or /var/www/html):
 
 ```
-sudo dd if=/dev/zero bs=512 count=2097152 of=/var/www/testFile.1GB
+sudo dd if=/dev/zero bs=512 count=2097152 of=/var/www/html/testFile.1GB
 ```
 
 Clone this repository on the server:
@@ -82,9 +82,10 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
-Then start tcpdump as below to save all of the tcp conversations from multiple expriment trials into a single pcap file.
+Then start a screen session and then start tcpdump as below to save all of the tcp conversations from multiple expriment trials into a single pcap file.
 
 ```
+screen
 outputFileName=`date +%F`-`date +%T` 
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
