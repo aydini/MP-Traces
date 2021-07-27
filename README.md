@@ -4,7 +4,7 @@ Repository by Ilknur
 
 ## Set up a webserver
 
-Reserve a single Xen VM node on any InstaGENI site, but when you reserve the resource make sure 
+Reserve a single InstaGENI node as a Xen VM on any InstaGENI site, but when you reserve the resource make sure 
 1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal.)
 2) to request additional disk space of 100 GB in the Request RSpec using 
 ```
@@ -28,6 +28,12 @@ See below for example RSpec
 </rspec>
 ```
 
+After the resources are reserved, prepare the extra disk space on the InstaGENI node:
+```
+sudo   /usr/testbed/bin/mkextrafs   /mnt
+sudo chmod a+w /mnt
+df -h
+```
 
 On the InstaGENI node, install Apache. Also install tshark for data analysis, and screen for running processes in background:
 
@@ -76,7 +82,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
-Then start tcpdump as below.
+Then start tcpdump as below to save all of the tcp conversations from multiple expriment trials into a single pcap file.
 
 ```
 outputFileName=`date +%F`-`date +%T` 
