@@ -2,8 +2,7 @@
 
 Repository by Ilknur
 
-### Set up a webserver
-
+## Set up a webserver
 
 Reserve a single Xen VM node on any InstaGENI site, but when you reserve the resource make sure 
 1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal.)
@@ -52,12 +51,12 @@ cd MP-Traces
 
 ## Capture packets
 
-Before starting a set of experiments start tcpdump and ss at the webserver:
+Before starting a set of experiments start tcpdump and ss at the webserver.
 
-#### start tcpdump
+### Start tcpdump
 
 1) use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
-2) use ifconfig command to get the interface information for the public ip of the web server to set variable -i option. 
+2) use ifconfig command to get the interface information for the public ip of the web server for -i option. 
 ```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 199.109.64.50  netmask 255.255.255.0  broadcast 199.109.64.255
@@ -84,13 +83,12 @@ outputFileName=`date +%F`-`date +%T`
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
-#### start ss collect whatever you can on port 80 of the webserver and save to an output file
+### Start ss collect whatever you can on port 80 of the webserver and save to an output file
 
-While running experiments, keep track of the details of each trial.
+### Running Experiments
+While running experiments, keep track of the details of each trial. An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
 
-An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
-
-Use a web browser or wget at the client device to connect to the web server and download the data file using the public URL for the data file.
+Use a web browser or wget at the client device to connect to the web server and download the data file at the client device using the public URL for the data file.
 
 ```
 wget  dataFilePublicURL
