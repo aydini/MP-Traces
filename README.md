@@ -5,11 +5,32 @@ Repository by Ilknur
 ### Set up a webserver
 
 
-Reserve a single InstaGENI node on any InstaGENI site, but when you reserve the resource, make sure to check the "Publicly Routable IP" box.
+Reserve a single Xen VM node on any InstaGENI site, but when you reserve the resource make sure 
+1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal.)
+2) to request additional disk space of 100 GB in the Request RSpec using 
+```
+<emulab:xen cores="2" ram="8192" disk="100"/>
+```
+inside sliver_type tag of the Request RSpec. 
 
-Find out the publicly routable "hostname" from the GENI Portal.
+See below for example RSpec
+```
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="webserver">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://portal.geni.net/images/Xen-VM.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
+    <routable_control_ip xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen">
+    <emulab:xen cores="2" ram="8192" disk="100"/>
+    <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU18-64-STD"/>
+    </sliver_type>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+  </node>
+</rspec>
+```
 
-On the InstaGENI node, install Apache. Also install tshark for data analysis, and screen for running things in background:
+
+On the InstaGENI node, install Apache. Also install tshark for data analysis, and screen for running processes in background:
 
 ```
 sudo apt-get update
@@ -29,9 +50,6 @@ git clone https://github.com/aydini/MP-Traces.git
 cd MP-Traces
 ```
 
-
-## ilknur: add your Rspec here
-## ilknur: how to add extra disk space to rspec
 ## Capture packets
 
 Before starting a set of experiments start tcpdump at the webserver
@@ -42,16 +60,16 @@ outputFileName=`date +%F`-`date +%T`
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
-### add starting ss command  (collect whatever you can) on port 80 of the webserver, collact in an putput file
+### ???update ??? add starting ss command  (collect whatever you can) on port 80 of the webserver, collect in an output file
 
 While running experiments, keep track of the details of each trial.
 
 An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
 
-Use a web browser or wget at the client device to connect to the web server such as below.
+Use a web browser or wget at the client device to connect to the web server and download the data file using the public URL for the data file.
 
 ```
-wget  hostname/dataFile
+wget  dataFilePublicURL
 ```  
  
 When the experiments are over, stop the packet capture at the web server with Ctrl+C, and extract data with:
@@ -68,7 +86,7 @@ Sample output:
 0,1626370514.253640000,257,69.121.239.12,51586,192.86.139.64,80
 ```
 
-## Data analysis
+## ???update??? Data analysis
 
 Assuming a file `test.csv`:
 
