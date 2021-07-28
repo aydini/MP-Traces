@@ -98,12 +98,16 @@ Install moreutils for ts command
 sudo apt-get update
 sudo apt-get install moreutils
 ```
-Start a screen session and then ss to save output every 0.1 sec to an output file. 
+Start a screen session and then ss to save output every 0.1 sec to an output file (see content of startSS.bash in the repo) 
 ```
-screen
-outputFileName=`date +%F`-`date +%T` 
-sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
-
+outDir=/mnt/MP-TRACE-FILES
+outputFileName=`date +%F`-`date +%T`
+while true
+do 
+	ss --no-header -eipn dst :80 or src :80 | ts '%.S' | tee -a $outDir/${outputFileName}".ss.txt"
+	sleep 0.1
+done
+```
 
 ### Running Experiments
 While running experiments, keep track of the details of each trial. An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
