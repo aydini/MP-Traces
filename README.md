@@ -59,7 +59,7 @@ cd MP-Traces
 
 Before starting a set of experiments start tcpdump and ss at the webserver.
 
-### Start tcpdump
+### Start tcpdump on web server
 
 1) use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
 2) use ifconfig command to get the interface information for the public ip of the web server for -i option. 
@@ -90,7 +90,7 @@ outputFileName=`date +%F`-`date +%T`
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
-### Start ss collect whatever you can on port 80 of the webserver and save to an output file
+### Start ss on web server
 
 Install moreutils for ts command
 
@@ -98,8 +98,10 @@ Install moreutils for ts command
 sudo apt-get update
 sudo apt-get install moreutils
 ```
-Start a screen session and then ss to save output every 0.1 sec to an output file (see content of startSS.bash in the repo) 
+Start a screen session. Start ss to collect statistics on port 80 and save output every 0.1 sec to a text file (see content of startSS.bash in the repo) 
+
 ```
+screen
 outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T`
 while true
