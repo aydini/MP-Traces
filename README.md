@@ -120,7 +120,11 @@ Use a web browser or wget at the client device to connect to the web server and 
 wget  dataFilePublicURL
 ```  
  
-When the experiments are over, stop the packet capture at the web server with Ctrl+C, and extract data with:
+When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
+
+## Data Analysis
+
+Process pcap file and extract data with:
 
 ```
 tshark -Tfields -e tcp.stream -e frame.time_epoch -e frame.len -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -E separator=',' -r "$outputFileName".pcap > "$outputFileName".csv
@@ -134,7 +138,6 @@ Sample output:
 0,1626370514.253640000,257,69.121.239.12,51586,192.86.139.64,80
 ```
 
-## ???update??? Data analysis
 
 Assuming a file `test.csv`:
 
