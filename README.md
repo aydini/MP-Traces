@@ -92,6 +92,19 @@ sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
 ### Start ss collect whatever you can on port 80 of the webserver and save to an output file
 
+Install moreutils for ts command
+
+```
+sudo apt-get update
+sudo apt-get install moreutils
+```
+Start a screen session and then ss to save output every 0.1 sec to an output file. 
+```
+screen
+outputFileName=`date +%F`-`date +%T` 
+sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
+
+
 ### Running Experiments
 While running experiments, keep track of the details of each trial. An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
 
