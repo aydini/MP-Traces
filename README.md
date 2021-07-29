@@ -82,15 +82,15 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
-Then start a screen session and then start tcpdump as below to save all of the tcp conversations from multiple expriment trials into a single pcap file.
+Start a screen session. Then start tcpdump as below to save all of the tcp conversations from multiple expriment trials into a single pcap file.
 
 ```
-screen
 outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T` 
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w "${outDir}/${outputFileName}.pcap"
 ```
+
 ### Start ss on web server
 
 Install moreutils for ts command
@@ -99,10 +99,10 @@ Install moreutils for ts command
 sudo apt-get update
 sudo apt-get install moreutils
 ```
-Start a screen session. Start ss to collect statistics on port 80 and save output every 0.1 sec to a text file (see content of startSS.bash in the repo) 
+
+Start a screen session.  Then, start ss to collect statistics on port 80 and save output every 0.1 sec to a text file (see content of startSS.bash in the repo and below) 
 
 ```
-screen
 outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T`
 while true
