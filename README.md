@@ -129,7 +129,7 @@ wget  dataFilePublicURL
 When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
 
 ## Data Analysis
-Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to process and extract data from the pcap file by creating a new pcap file per TCP connversation in the captured pcap file.
+Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to process and extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file.
 
 content of analyzeData.bash, DELETE later (ilknur)
 ```
@@ -160,4 +160,10 @@ tshark -Tfields -e tcp.stream \
 
 sudo mv *__*pcap $outDir
 echo "finished see output file in ${outDir}"
+```
+
+Next analyze each pcap packet to get the trace files in time,throughput csv format.
+```
+#Reference https://ask.wireshark.org/question/21680/how-to-export-tcp-throughput-into-csv-over-time/
+
 ```
