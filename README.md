@@ -59,7 +59,7 @@ cd MP-Traces
 
 Before starting a set of experiments start tcpdump and ss at the webserver.
 
-### Start tcpdump
+### Start tcpdump on web server
 
 1) use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
 2) use ifconfig command to get the interface information for the public ip of the web server for -i option. 
@@ -90,7 +90,26 @@ outputFileName=`date +%F`-`date +%T`
 interface="eth0"
 sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
 ```
-### Start ss collect whatever you can on port 80 of the webserver and save to an output file
+### Start ss on web server
+
+Install moreutils for ts command
+
+```
+sudo apt-get update
+sudo apt-get install moreutils
+```
+Start a screen session. Start ss to collect statistics on port 80 and save output every 0.1 sec to a text file (see content of startSS.bash in the repo) 
+
+```
+screen
+outDir=/mnt/MP-TRACE-FILES
+outputFileName=`date +%F`-`date +%T`
+while true
+do 
+	ss --no-header -eipn dst :80 or src :80 | ts '%.S' | tee -a $outDir/${outputFileName}".ss.txt"
+	sleep 0.1
+done
+```
 
 ### Running Experiments
 While running experiments, keep track of the details of each trial. An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
@@ -101,7 +120,11 @@ Use a web browser or wget at the client device to connect to the web server and 
 wget  dataFilePublicURL
 ```  
  
-When the experiments are over, stop the packet capture at the web server with Ctrl+C, and extract data with:
+When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
+
+## Data Analysis
+
+Process pcap file and extract data with:
 
 ```
 tshark -Tfields -e tcp.stream -e frame.time_epoch -e frame.len -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -E separator=',' -r "$outputFileName".pcap > "$outputFileName".csv
@@ -115,7 +138,6 @@ Sample output:
 0,1626370514.253640000,257,69.121.239.12,51586,192.86.139.64,80
 ```
 
-## ???update??? Data analysis
 
 Assuming a file `test.csv`:
 
