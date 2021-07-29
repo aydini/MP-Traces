@@ -60,7 +60,7 @@ cd MP-Traces
 Before starting a set of experiments start tcpdump and ss at the webserver.
 
 ### Start tcpdump on web server
-
+About the tcpdump session:
 1) use -s66 option for capturing header size of 66B =14B for Ethernet + 20B for IP + 20B for TCP
 2) use ifconfig command to get the interface information for the public ip of the web server for -i option. 
 ```
@@ -82,7 +82,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
-Start a screen session. Run [startTcpdump.bash](startTcpdump.bash) to start tcpdump to save all of the tcp conversations from multiple expriment trials into a single pcap file.
+Start a screen session. Run [startTcpdump.bash](startTcpdump.bash) to start tcpdump session to save all of the tcp conversations from multiple expriment trials into a single pcap file.
 
 DELETE the code piece below (ilknur)
 ```
@@ -103,7 +103,7 @@ sudo apt-get install moreutils
 
 Start a screen session.  Run [startSS.bash](startSS.bash) to start ss to collect statistics on port 80 and save output every 0.1 sec to a text file 
 
-DElETE this code part (ilknur)
+DELETE this code part (ilknur)
 ```
 outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T`
@@ -126,7 +126,10 @@ wget  dataFilePublicURL
 When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
 
 ## Data Analysis
+Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to process and extract data from the pcap file by creating a new pcap file per TCP connversation in the captured pcap file.
 
+
+DELETE this part - ilknur
 Process pcap file and extract data with:
 
 ```
@@ -159,3 +162,4 @@ dat0$timeDiff <- c(tail(dat0$time, -1) - head(dat0$time, -1), 0)
 # next step: compute a windowed sum of time and size columns
 # look into e.g. https://stackoverflow.com/q/46396417/3524528
 ```
+`
