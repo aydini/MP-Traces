@@ -100,7 +100,7 @@ sudo apt-get update
 sudo apt-get install moreutils
 ```
 
-Start a screen session.  Then, start ss to collect statistics on port 80 and save output every 0.1 sec to a text file (see content of startSS.bash in the repo and below) 
+Start a screen session.  Run [startSS.bash](startSS.bash) to start ss to collect statistics on port 80 and save output every 0.1 sec to a text file 
 
 ```
 outDir=/mnt/MP-TRACE-FILES
