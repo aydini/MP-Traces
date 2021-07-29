@@ -82,8 +82,9 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
-Start a screen session. Then start tcpdump as below to save all of the tcp conversations from multiple expriment trials into a single pcap file.
+Start a screen session. Run [startTcpdump.bash](startTcpdump.bash) to start tcpdump to save all of the tcp conversations from multiple expriment trials into a single pcap file.
 
+DELETE the code piece below (ilknur)
 ```
 outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T` 
@@ -102,6 +103,7 @@ sudo apt-get install moreutils
 
 Start a screen session.  Run [startSS.bash](startSS.bash) to start ss to collect statistics on port 80 and save output every 0.1 sec to a text file 
 
+DElETE this code part (ilknur)
 ```
 outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T`
