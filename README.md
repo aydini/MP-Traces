@@ -86,9 +86,10 @@ Then start a screen session and then start tcpdump as below to save all of the t
 
 ```
 screen
+outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T` 
 interface="eth0"
-sudo tcpdump port 80 -i $interface -s 66 -w $outputFileName".pcap"
+sudo tcpdump port 80 -i $interface -s 66 -w "${outDir}/${outputFileName}.pcap"
 ```
 ### Start ss on web server
 
@@ -106,7 +107,7 @@ outDir=/mnt/MP-TRACE-FILES
 outputFileName=`date +%F`-`date +%T`
 while true
 do 
-	ss --no-header -eipn dst :80 or src :80 | ts '%.S' | tee -a $outDir/${outputFileName}".ss.txt"
+	ss --no-header -eipn dst :80 or src :80 | ts '%.S' | tee -a "${outDir}/${outputFileName}.ss.txt"
 	sleep 0.1
 done
 ```
