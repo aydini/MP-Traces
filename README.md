@@ -84,15 +84,6 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 ```
 Start a screen session. Run [startTcpdump.bash](startTcpdump.bash) to start tcpdump session to save all of the tcp conversations from multiple expriment trials into a single pcap file.
 
-content of startTcpdump.bash, DELETE later (ilknur)
-```
-outDir=/mnt/mpTraceFiles # put no ending /
-outputFileName=`date +%F`-`date +%T`
-destIP="199.109.64.50"
-echo "starting tcpdump and saving output to ${outDir}/${outputFileName}.pcap"
-sudo tcpdump dst $destIP and dst port 80 -s 66 -w "${outDir}/${outputFileName}.pcap"
-```
-
 ### Start ss on web server
 
 Install moreutils for ts command
@@ -103,19 +94,6 @@ sudo apt-get install moreutils
 ```
 
 Start a screen session.  Run [startSS.bash](startSS.bash) to start ss to collect statistics on port 80 and save output every 0.1 sec to a text file 
-
-content of startSS.bash, DELETE later (ilknur)
-```
-outDir=/mnt/mpTraceFiles # put no ending /
-outputFileName=`date +%F`-`date +%T`
-
-echo "starting ss and saving  output to ${outDir}/${outputFileName}.ss.txt"
-while true
-do
-        ss --no-header -eipn dst :80 or src :80 | ts '%.S' | tee -a "${outDir}/${outputFileName}.ss.txt"
-        sleep 0.1
-done
-```
 
 ### Running Experiments
 While running experiments, keep track of the details of each trial. An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
@@ -132,38 +110,6 @@ When the experiments are over, stop the packet capture at the web server for tcp
 
 ## Data Analysis
 Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to process and extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file.
-
-content of analyzeData.bash, DELETE later (ilknur)
-```
-# reference https://serverfault.com/questions/273066/tool-for-splitting-pcap-files-by-tcp-connection/881221#881221
-
-
-# README:
-# before running this script update the dir, file outdir variables
-#
-dir=/mnt/mpTraceFiles #.pcap file director, put no ending /
-file=2021-07-29-12:59:53.pcap #.pcap file
-outDir="${dir}/${file}-PROCESSED" # for individual TCP stream pcap files
-sudo rm -rf $outDir; sudo mkdir $outDir
-
-echo "analzing pcap file ${dir}/${file}..."
-tshark -Tfields -e tcp.stream \
-                -e frame.time \
-                -e ip.src \
-                -e tcp.srcport \
-                -e ip.dst \
-                -e tcp.dstport -r "${dir}/${file}" |
-  sort -snu |
-  while read -a f; do
-  [[ "${f[5]}" ]] || continue  # sometimes there is no stream number ex. UDP
-    fileout=$(echo ${f[0]}__${f[1]}__${f[2]}__${f[3]}__${f[4]}__${f[5]})
-    tshark -r "${dir}/${file}" -2R "tcp.stream == ${f[0]}" -w "$fileout.pcap"
-  done
-
-
-sudo mv *__*pcap $outDir
-echo "finished see the output files in ${outDir}"
-```
 
 Next analyze each pcap packet to get the trace files in time,throughput csv format.
 ```
