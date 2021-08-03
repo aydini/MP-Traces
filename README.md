@@ -86,11 +86,11 @@ Start a screen session. Run [startTcpdump.bash](startTcpdump.bash) to start tcpd
 
 content of startTcpdump.bash, DELETE later (ilknur)
 ```
-outDir=/mnt/MP-TRACE-FILES
+outDir=/mnt/mpTraceFiles # put no ending /
 outputFileName=`date +%F`-`date +%T`
-interface="eth0"
+destIP="199.109.64.50"
 echo "starting tcpdump and saving output to ${outDir}/${outputFileName}.pcap"
-sudo tcpdump port 80 -i $interface -s 66 -w "${outDir}/${outputFileName}.pcap"
+sudo tcpdump dst $destIP and dst port 80 -s 66 -w "${outDir}/${outputFileName}.pcap"
 ```
 
 ### Start ss on web server
@@ -106,7 +106,7 @@ Start a screen session.  Run [startSS.bash](startSS.bash) to start ss to collect
 
 content of startSS.bash, DELETE later (ilknur)
 ```
-outDir=/mnt/MP-TRACE-FILES
+outDir=/mnt/mpTraceFiles # put no ending /
 outputFileName=`date +%F`-`date +%T`
 
 echo "starting ss and saving  output to ${outDir}/${outputFileName}.ss.txt"
@@ -135,11 +135,12 @@ content of analyzeData.bash, DELETE later (ilknur)
 ```
 # reference https://serverfault.com/questions/273066/tool-for-splitting-pcap-files-by-tcp-connection/881221#881221
 
+
 # README:
 # before running this script update the dir, file outdir variables
 #
-dir=/mnt/MP-TRACE-FILES #.pcap file
-file=2021-07-29-09:35:40.pcap #.pcap file
+dir=/mnt/mpTraceFiles #.pcap file director, put no ending /
+file=2021-07-29-12:59:53.pcap #.pcap file
 outDir="${dir}/${file}-PROCESSED" # for individual TCP stream pcap files
 sudo rm -rf $outDir; sudo mkdir $outDir
 
@@ -159,11 +160,11 @@ tshark -Tfields -e tcp.stream \
 
 
 sudo mv *__*pcap $outDir
-echo "finished see output file in ${outDir}"
+echo "finished see the output files in ${outDir}"
 ```
 
 Next analyze each pcap packet to get the trace files in time,throughput csv format.
 ```
 #Reference https://ask.wireshark.org/question/21680/how-to-export-tcp-throughput-into-csv-over-time/
-
+????
 ```
