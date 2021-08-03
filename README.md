@@ -120,7 +120,9 @@ done
 ### Running Experiments
 While running experiments, keep track of the details of each trial. An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
 
-Use a web browser or wget at the client device to connect to the web server and download the data file at the client device using the public URL for the data file.
+Use a web browser or wget at the client device to connect to the web server and download the data file at the client device using the public URL for the data file. 
+
+If you are using a web browser to download the data file, make sure to turn off the parallel downloading b setting the browser flags/configurationf ile accourdingly. 
 
 ```
 wget  dataFilePublicURL
@@ -146,7 +148,7 @@ sudo rm -rf $outDir; sudo mkdir $outDir
 
 echo "analzing pcap file ${dir}/${file}..."
 tshark -Tfields -e tcp.stream \
-                -e frame.time_epoch \
+                -e frame.time \
                 -e ip.src \
                 -e tcp.srcport \
                 -e ip.dst \
