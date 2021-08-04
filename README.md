@@ -109,4 +109,6 @@ wget  dataFilePublicURL
 When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
 
 ## Data Analysis
-Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to 1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file and 2) analyze each pcap packet to get the trace files in time,throughput csv format.
+Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to 
+1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file and 
+2) analyze each pcap packet to get the trace files in time,throughput csv format.
