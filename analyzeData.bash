@@ -5,8 +5,8 @@
 # README: 
 # before running this script update the dir, serverIP and flags
 #
-FLAG_GET_TCP_STREAM_PCAPS=0 # 1(true) or 0 (false)
-FLAG_GET_CSV_FILES=1 # 1(true) or 0 (false)
+FLAG_GET_PER_TCP_STREAM_PCAP=1 # 1(true)
+FLAG_GET_CSV_FILES=1 # 1(true)
 dir=/mnt/mpTraceFiles #.pcap file director, put no ending /
 serverIP="199.109.64.50"
         
@@ -20,7 +20,7 @@ else
 	#----------------------------------------------------------------------
 	# get the pcap files per TCP stream inside the collectivePcapFileName
 	#-----------------------------------------------------------------------
-	if [ $FLAG_GET_TCP_STREAM_PCAPS -eq 1 ]
+	if [ $FLAG_GET_PER_TCP_STREAM_PCAP -eq 1 ]
 	then
 		sudo rm -rf $outDir; sudo mkdir $outDir
 
@@ -48,7 +48,8 @@ else
 	#-----------------------------------------------------------------------
 	if [ $FLAG_GET_CSV_FILES -eq 1 ]
 	then	
-		for streamFile in `ls $outDir/3__*.pcap`
+	#	for streamFile in `ls $outDir/3__*.pcap`
+		for streamFile in `ls $outDir/*.pcap`
 		do
 			echo "processing stream pcap file $streamFile to get csv file..."
 			tsharkFile="${streamFile}.tshark.txt"
@@ -58,7 +59,6 @@ else
 			#|   0 <>   1 |  9966648 |              |
 			cat $tsharkFile | grep "^| *[0-9]* *<> *[0-9]* *|" | tr -d ' <' | tr '>' '|' | awk -F"|" '{print $3","$4}' > $csvFile 
 		done
-	   
 		echo "finished see the csv files in ${outDir}"; echo " "
 	fi	
 fi
