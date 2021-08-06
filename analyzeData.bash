@@ -5,7 +5,7 @@
 # README: 
 # before running this script update the dir, serverIP and flags
 #
-FLAG_GET_PER_TCP_STREAM_PCAP=1 # 1(true)
+FLAG_GET_PER_TCP_STREAM_PCAP=0 # 1(true)
 FLAG_GET_CSV_FILES=1 # 1(true)
 dir=/mnt/mpTraceFiles #.pcap file director, put no ending /
 serverIP="199.109.64.50"
@@ -48,16 +48,17 @@ else
 	#-----------------------------------------------------------------------
 	if [ $FLAG_GET_CSV_FILES -eq 1 ]
 	then	
-	#	for streamFile in `ls $outDir/3__*.pcap`
 		for streamFile in `ls $outDir/*.pcap`
 		do
 			echo "processing stream pcap file $streamFile to get csv file..."
 			tsharkFile="${streamFile}.tshark.txt"
 			csvFile="${streamFile}.csv"
-			sudo tshark -r "${streamFile}" -q -z io,stat,1,"BYTES()ip.src ==$serverIP" > $tsharkFile
+			echo "tsharkFile is $tsharkFile"
+			echo "csvFile is $csvFile"
+			sudo tshark -r "${streamFile}" -q -z io,stat,1,"BYTES()ip.src ==$serverIP" | tee $tsharkFile
 			# example input line is as below and we create/output a time,throughput line
 			#|   0 <>   1 |  9966648 |              |
-			cat $tsharkFile | grep "^| *[0-9]* *<> *[0-9]* *|" | tr -d ' <' | tr '>' '|' | awk -F"|" '{print $3","$4}' > $csvFile 
+			cat $tsharkFile | grep "^| *[0-9]* *<> *[0-9]* *|" | tr -d ' <' | tr '>' '|' | awk -F"|" '{print $3","$4}' | tee $csvFile 
 		done
 		echo "finished see the csv files in ${outDir}"; echo " "
 	fi	
