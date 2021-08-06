@@ -109,6 +109,34 @@ wget  dataFilePublicURL
 When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
 
 ## Data Analysis
-Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to 
-1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file and 
-2) analyze each pcap packet to get the trace files in time,throughput csv format.
+Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to do the following in order
+1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file
+2) analyze each pcap packet to get the trace files tshark.txt files and from that file a csv file in time,throughput csv format.
+3) ???create an R script file for each .csv file to draw the data as line graph and save the plot as a .png file
+```
+install.packages("ggplot2")
+library(ggplot2)
+
+# README: before using this R script set csvFolder and csvFile variables accordingly
+csvFolder='http://webserver.webserver-aydini.ch-geni-net.instageni.nysernet.org/mpTraceFiles/2021-07-27-18:53:22.pcap-PROCESSED/' #use ending /
+csvFile<-'1__1627426664.194789000__192.42.55.21__34482__199.109.64.50__80.pcap.csv'
+csvFileFull<-paste(csvFolder,csvFile,sep='')
+
+df<- read.csv(csvFileFull, header= FALSE)
+title<-csvFile
+
+xVal<-unlist(df[1]) # unit is econds
+yVal<-unlist(df[2]*8/10^6) # convert bytes to Mbps
+
+ggplot(df, aes(x=xVal, y=yVal, group=1)) +
+  geom_line(color="green", size=1)+
+  xlab("time (sec)")+
+  ylab("Bandwidth (Mbps)")+
+  geom_point(color="black", size=1)+
+  ggtitle(title)
+
+pngDir='C:\Users\ilknu\Documents\R\'
+pngFile<-paste(pngDir,csvFile,'.png', sep='')
+ggsave(pngFile)
+
+```
