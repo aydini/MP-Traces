@@ -56,9 +56,14 @@ else
 			echo "tsharkFile is $tsharkFile"
 			echo "csvFile is $csvFile"
 			sudo tshark -r "${streamFile}" -q -z io,stat,1,"BYTES()ip.src ==$serverIP" | tee $tsharkFile
-			# example input line is as below and we create/output a time,throughput line
-			#|   0 <>   1 |  9966648 |              |
-			cat $tsharkFile | grep "^| *[0-9]* *<> *[0-9]* *|" | tr -d ' <' | tr '>' '|' | awk -F"|" '{print $3","$4}' | tee $csvFile 
+			lineCount=`wc  -l $tsharkFile|cut -d' ' -f1`
+			echo "lineCount is $lineCount"
+			if [ $lineCount -gt 20 ] # filter the tshark output bu line count
+			then	
+				# example input line is as below and we create/output a time,throughput line
+				#|   0 <>   1 |  9966648 |              |
+				cat $tsharkFile | grep "^| *[0-9]* *<> *[0-9]* *|" | tr -d ' <' | tr '>' '|' | awk -F"|" '{print $3","$4}' | tee $csvFile 
+			fi
 		done
 		echo "finished see the csv files in ${outDir}"; echo " "
 	fi	
