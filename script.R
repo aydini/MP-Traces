@@ -2,7 +2,7 @@ install.packages("ggplot2")
 library(ggplot2)
 
 # README: set csvFolder and csvFile etc
-path<-"11"
+path<-"11" # valid streams 4,5  7,8  9,10  11,12  13,14
 config<-"2021-08-11-16:40:01.pcap-PROCESSED"
 stream1<-4
 stream2<-5
