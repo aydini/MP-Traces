@@ -112,7 +112,7 @@ When the experiments are over, stop the packet capture at the web server for tcp
 Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to do the following in order
 1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file
 2) analyze each pcap packet to get the trace files tshark.txt files and from that file a csv file in time,throughput csv format.
-3) ???create an R script file for each .csv file to draw the data as line graph and save the plot as a .png file
+3) ???create an [R script file](script.R) for each .csv file to draw the data as line graph and save the plot as a .png file
 ```
 install.packages("ggplot2")
 library(ggplot2)
