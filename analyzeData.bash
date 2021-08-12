@@ -1,9 +1,9 @@
 # Reference https://serverfault.com/questions/273066/tool-for-splitting-pcap-files-by-tcp-connection/881221#881221
 #Reference https://ask.wireshark.org/question/21680/how-to-export-tcp-throughput-into-csv-over-time/
 
-
 # README: 
-# before running this script update the dir, serverIP and flags
+# 1) make sure that you run sudo su before running this script
+# 2) before running this script update the dir, serverIP and flags
 #
 FLAG_GET_PER_TCP_STREAM_PCAP=0 # 1(true)
 FLAG_GET_CSV_FILES=1 # 1(true)
