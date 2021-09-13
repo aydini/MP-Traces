@@ -1,4 +1,4 @@
-library(ggplot2)
+library(ggplot2) # ggplot2 library
 
 # Read in data
 
