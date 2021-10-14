@@ -111,32 +111,6 @@ When the experiments are over, stop the packet capture at the web server for tcp
 ## Data Analysis
 Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to do the following in order
 1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file
-2) analyze each pcap packet to get the trace files tshark.txt files and from that file a csv file in time,throughput csv format.
-3) ???create an [R script file](script.R) for each .csv file to draw the data as line graph and save the plot as a .png file
-```
-install.packages("ggplot2")
-library(ggplot2)
+2) analyze each individual pcap file to get each trace file tshark.txt and from that file an individual csv file in [time,throughput] format.
 
-# README: before using this R script set csvFolder and csvFile variables accordingly
-csvFolder='http://webserver.webserver-aydini.ch-geni-net.instageni.nysernet.org/mpTraceFiles/2021-07-27-18:53:22.pcap-PROCESSED/' #use ending /
-csvFile<-'1__1627426664.194789000__192.42.55.21__34482__199.109.64.50__80.pcap.csv'
-csvFileFull<-paste(csvFolder,csvFile,sep='')
-
-df<- read.csv(csvFileFull, header= FALSE)
-title<-csvFile
-
-xVal<-unlist(df[1]) # unit is econds
-yVal<-unlist(df[2]*8/10^6) # convert bytes to Mbps
-
-ggplot(df, aes(x=xVal, y=yVal, group=1)) +
-  geom_line(color="green", size=1)+
-  xlab("time (sec)")+
-  ylab("Bandwidth (Mbps)")+
-  geom_point(color="black", size=1)+
-  ggtitle(title)
-
-pngDir='C:\Users\ilknu\Documents\R\'
-pngFile<-paste(pngDir,csvFile,'.png', sep='')
-ggsave(pngFile)
-
-```
+Afterwards, use [vis.R](vis.R) file: this is an R script that will take an experiment log .csv file as input and create all the plots from all experiments and trials and show them in a tabular form on a single plot utilizing R facet (note that previously, we worked on this [script.R](script.R) for each .csv file to draw the data as line graph and save the plot as a .png file and cancelled script.R after vis.R)
