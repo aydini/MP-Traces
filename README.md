@@ -100,7 +100,7 @@ While running experiments, keep track of the details of each trial. An experimen
 
 Use a web browser or wget at the client device to connect to the web server and download the data file at the client device using the public URL for the data file. 
 
-If you are using a web browser to download the data file, make sure to turn off the parallel downloading b setting the browser flags/configurationf ile accourdingly. 
+If you are using a web browser to download the data file, make sure to turn off the parallel downloading setting the browser flags/configuration file accordingly. 
 
 ```
 wget  dataFilePublicURL
