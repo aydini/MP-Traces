@@ -1,5 +1,6 @@
 * This folder contains the trace pair files collected in Stony Brook University (SBU), in New York. 
 * The trace file name format is pathID_trial_network.csv
+* Each trace file has a CSV format timeInSeconds,BitPerSecond
 * Explanation for pathIDs
   * path 7: SBU walk SAC side door to the bus stop (WiFi should get weaker)
   * path 8: SBU library walk from Central Reading Room to outside by the side door towards Stellar center (WiFi should get weaker)
