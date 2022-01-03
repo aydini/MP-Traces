@@ -1,4 +1,4 @@
-* This folder contains the trace pairs (wifi and cellular signals during the same time and space) collected in Stony Brook University (SBU), in New York. 
+* This folder contains the trace pairs (wifi and cellular link data at the same time and space) collected in Stony Brook University (SBU), in New York. 
 * The trace file name format is pathID_trial_network.csv
 * Each trace file has a CSV format timeInSeconds,ByesPerSecond where timeInSeconds is the range of [1:100]
 * Explanation for pathIDs
