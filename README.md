@@ -113,4 +113,8 @@ Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to do the foll
 1) extract data from the pcap file by creating a new pcap file per TCP conversation in the captured pcap file
 2) analyze each individual pcap file to get each trace file tshark.txt and from that file an individual csv file in [time,throughput] format.
 
-Afterwards, use [vis.R](vis.R) file: this is an R script that will take an experiment log .csv file as input and create all the plots from all experiments and trials and show them in a tabular form on a single plot utilizing R facet (note that previously, we worked on this [script.R](script.R) for each .csv file to draw the data as line graph and save the plot as a .png file and cancelled script.R after vis.R)
+## Data Visualization
+Ue colab file [multipath.ipynb](multipath.ipynb) that takes the trace files in .csv format and creates graphs and statistics per paths, network, trial. Note that github may not show the content of the file correcly. But you open it from colab accessing it directly from Github or your local copy of the repo.
+
+ps-1. ignore [vis.R](vis.R) file in the repo: an R script used to create graphs and statistics per paths, network, trial from .csv file using R facet but cancelled after [multipath.ipynb](multipath.ipynb) is created
+ps-2. ignore [script.R](script.R) in the repo: initial R script file to draw the data as line graph and save the plot as a .png file for each .csv file but cancelled  after [vis.R](vis.R) cis reated
