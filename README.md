@@ -114,7 +114,7 @@ Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to do the foll
 2) analyze each individual pcap file to get each trace file tshark.txt and from that file an individual csv file in [time,throughput] format.
 
 ## Data Visualization
-Ue colab file [multipath.ipynb](multipath.ipynb) that takes the trace files in .csv format and creates graphs and statistics per paths, network, trial. Note that github may not show the content of the file correcly. But you open it from colab accessing it directly from Github or your local copy of the repo.
+Use colab file [multipath.ipynb](multipath.ipynb) that takes the trace files in .csv format  to create graphs and statistics per path, network, and trial. Note that github may not show the content of the file correcly. But you can open it from colab (access Github from your colab session) or download the file and open local copy in colab.
 
 ps-1. ignore [vis.R](vis.R) file in the repo: an R script used to create graphs and statistics per paths, network, trial from .csv file using R facet but cancelled after multipath.ipynb is created
 
