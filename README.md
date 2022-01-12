@@ -116,5 +116,6 @@ Start a screen session.  Run [analyzeData.bash](analyzeData.bash) to do the foll
 ## Data Visualization
 Ue colab file [multipath.ipynb](multipath.ipynb) that takes the trace files in .csv format and creates graphs and statistics per paths, network, trial. Note that github may not show the content of the file correcly. But you open it from colab accessing it directly from Github or your local copy of the repo.
 
-ps-1. ignore [vis.R](vis.R) file in the repo: an R script used to create graphs and statistics per paths, network, trial from .csv file using R facet but cancelled after [multipath.ipynb](multipath.ipynb) is created
-ps-2. ignore [script.R](script.R) in the repo: initial R script file to draw the data as line graph and save the plot as a .png file for each .csv file but cancelled  after [vis.R](vis.R) cis reated
+ps-1. ignore [vis.R](vis.R) file in the repo: an R script used to create graphs and statistics per paths, network, trial from .csv file using R facet but cancelled after multipath.ipynb is created
+
+ps-2. ignore [script.R](script.R) in the repo: initial R script file to draw the data as line graph and save the plot as a .png file for each .csv file but cancelled  after vis.R is created
