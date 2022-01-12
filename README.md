@@ -100,22 +100,22 @@ While running experiments, keep track of the details of each trial in a log file
 ```
 (date,pathID,pathTrialCount,pathDescription,note,approxStartTime,tsharkStreamID,clientDevice,clientInterface,downloadMethod,downloadURL,pcapFileName,ssFileName)
 ```
-Two example lines from our experiment log file:
+Two example lines showing path 2 trial 2 recording for each cellular and wifi devices from our experiment log are as follows.
 ```
-8/3/2021,**7,2**,at SBU walk SAc side door to the bus stop,expect the wifi signal to start strong and get worse,**4:22 PM,0,samsungA71,cell**,web browser,webserver.WebServer-aydini.ch-geni-net.instageni.nysernet.org/testFile.1GB,2021-08-03-16:15:28.pcap,2021-08-03-16:17:20.ss.txt)
-(8/3/2021,**7,2**,at SBU walk SAc side door to the bus stop	expect the wifi signal to start strong and get worse,**4:22 PM,1,surface tablet	wifi**,web browser,webserver.WebServer-aydini.ch-geni-net.instageni.nysernet.org/testFile.1GB,2021-08-03-16:15:28.pcap,2021-08-03-16:17:20.ss.txt)
+8/3/2021,7,2,at SBU walk SAc side door to the bus stop,expect the wifi signal to start strong and get worse,4:22 PM,0,samsungA71,cell,web browser,webserver.WebServer-aydini.ch-geni-net.instageni.nysernet.org/testFile.1GB,2021-08-03-16:15:28.pcap,2021-08-03-16:17:20.ss.txt
+8/3/2021,7,2,at SBU walk SAc side door to the bus stop	expect the wifi signal to start strong and get worse,4:22 PM,1,surface tablet,wifi,web browser,webserver.WebServer-aydini.ch-geni-net.instageni.nysernet.org/testFile.1GB,2021-08-03-16:15:28.pcap,2021-08-03-16:17:20.ss.txt
 ```
 
 An experiment trial is defined as connecting to the web server via a client device with a WiFi interface and another client device with a cellular interface simultaneously to download the data file. Note that the client devices are physically located in the same position and are made to move together to imitate the behaviour of a single client device with 2 interfaces (WiFi + cellular). 
 
 Use a web browser or wget at the client device to connect to the web server and download the data file at the client device using the public URL for the data file. 
 
-**important note:** If you are using a web browser to download the data file, make sure to turn off the parallel downloading setting the browser flags/configuration file accordingly. 
-
 ```
 wget  dataFilePublicURL
 ```  
- 
+
+**important note:** If you are using a web browser to download the data file, make sure to turn off the parallel downloading setting the browser flags/configuration file accordingly. 
+
 When the experiments are over, stop the packet capture at the web server for tcpdump and ss with Ctrl+C.
 
 ## Data Analysis
