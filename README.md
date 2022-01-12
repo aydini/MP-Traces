@@ -100,7 +100,7 @@ While running experiments, keep track of the details of each trial in a log file
 ```
 (date,pathID,pathTrialCount,pathDescription,note,approxStartTime,tsharkStreamID,clientDevice,clientInterface,downloadMethod,downloadURL,pcapFileName,ssFileName)
 ```
-Two example lines showing path 2 trial 2 recording for each cellular and wifi devices from our experiment log are as follows.
+Two example lines showing path 7 trial 2 recording for each cellular and wifi devices from our experiment log are as follows.
 ```
 8/3/2021,7,2,at SBU walk SAc side door to the bus stop,expect the wifi signal to start strong and get worse,4:22 PM,0,samsungA71,cell,web browser,webserver.WebServer-aydini.ch-geni-net.instageni.nysernet.org/testFile.1GB,2021-08-03-16:15:28.pcap,2021-08-03-16:17:20.ss.txt
 8/3/2021,7,2,at SBU walk SAc side door to the bus stop	expect the wifi signal to start strong and get worse,4:22 PM,1,surface tablet,wifi,web browser,webserver.WebServer-aydini.ch-geni-net.instageni.nysernet.org/testFile.1GB,2021-08-03-16:15:28.pcap,2021-08-03-16:17:20.ss.txt
