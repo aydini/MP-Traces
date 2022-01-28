@@ -12,7 +12,7 @@ Reserve a single InstaGENI node as a Xen VM on any InstaGENI site, but when you 
 ```
 inside sliver_type tag of the Request RSpec. 
 
-See below for example RSpec
+See below for example RSpec when step 1 and 2 above are completed
 ```
 <rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
   <node xmlns="http://www.geni.net/resources/rspec/3" client_id="webserver">
