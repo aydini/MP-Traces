@@ -10,3 +10,5 @@ At the client run
 ```
 iperf3 -f m -c 192.168.3.1 -C "cubic" -P 1 -i 1 -t 200
 ```
+a sample iperf session output at the client is below
+![image](https://user-images.githubusercontent.com/36745106/151589120-2417aa69-fcd3-43f9-a3cd-64494c63a88b.png)
