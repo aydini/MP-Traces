@@ -6,7 +6,8 @@ Repository by Ilknur
 
 Reserve a single InstaGENI node as a Xen VM on any InstaGENI site, but when you reserve the resource make sure 
 1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal by following Aggregates menu item  and then Resource Details)
-2) to request additional disk space of 100 GB in the Request RSpec using 
+![image](https://github.com/aydini/MP-Traces/blob/8e53f7e982b99af038df8a58fea4d32e5a0cf3f4/Images/findingRoutableIP_of_GENI_node.PNG)
+3) to request additional disk space of 100 GB in the Request RSpec using 
 ```
 <emulab:xen cores="2" ram="8192" disk="100"/>
 ```
