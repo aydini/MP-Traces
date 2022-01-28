@@ -1,6 +1,6 @@
 # get control and experiment interface names
-ifacetoC=$(ifconfig | grep -B1 "inet 192.168.2.1" | head -n1 | cut -f1 -d:)
-ifacetoS=$(ifconfig | grep -B1 "inet 192.168.20.1" | head -n1 | cut -f1 -d:)
+ifacetoC=$(ifconfig | grep -B1 "inet 192.168.20.1" | head -n1 | cut -f1 -d:)
+ifacetoS=$(ifconfig | grep -B1 "inet 192.168.2.1" | head -n1 | cut -f1 -d:)
 
 # remove Cloudlab created automatically added routes: bring both interfaces of the client node down and then up
 sudo ifconfig $ifacetoC down; sudo ifconfig $ifacetoC up 
