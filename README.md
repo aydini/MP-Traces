@@ -4,10 +4,9 @@ Repository by Ilknur
 
 ## Set up a webserver
 
-Reserve a single InstaGENI node as a Xen VM on any InstaGENI site, but when you reserve the resource make sure 
-1) to check the "Publicly Routable IP" box (after the reservation, find out the publicly routable "hostname" from the GENI Portal by following Aggregates menu item  and then Resource Details)
-![image](https://github.com/aydini/MP-Traces/blob/8e53f7e982b99af038df8a58fea4d32e5a0cf3f4/Images/findingRoutableIP_of_GENI_node.PNG)
-3) to request additional disk space of 100 GB in the Request RSpec using 
+Reserve a single InstaGENI node as a Xen VM on any InstaGENI site, but when you reserve the resource make sure to
+1) check the "Publicly Routable IP" box 
+2) request additional disk space of 100 GB in the **Request RSpec** using 
 ```
 <emulab:xen cores="2" ram="8192" disk="100"/>
 ```
@@ -29,7 +28,10 @@ See below for example RSpec when step 1 and 2 above are completed
 </rspec>
 ```
 
-After the resources are reserved, prepare the extra disk space on the InstaGENI node:
+After the resources are reserved, find out the publicly routable "hostname" from the GENI Portal by following Aggregates menu item  and then Resource Details-- see example screnshot
+![image](https://github.com/aydini/MP-Traces/blob/8e53f7e982b99af038df8a58fea4d32e5a0cf3f4/Images/findingRoutableIP_of_GENI_node.PNG)
+
+Prepare the extra disk space on the InstaGENI node (webserver):
 ```
 sudo   /usr/testbed/bin/mkextrafs   /mnt
 sudo chmod a+w /mnt
