@@ -4,7 +4,7 @@ iface2=$(ifconfig | grep -B1 "inet 192.168.1.1" | head -n1 | cut -f1 -d:)
 
 # remove Cloudlab created automatically added routes: bring both interfaces of the client node down and then up
 sudo ifconfig $iface1 down; sudo ifconfig $iface1 up 
-sudo ifconfig $iface1 down; sudo ifconfig $iface1 up
+sudo ifconfig $iface2 down; sudo ifconfig $iface2 up
 
 
 # add the new routes manually 
