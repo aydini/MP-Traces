@@ -14,7 +14,7 @@ sudo sysctl -w net.ipv4.tcp_congestion_control=balia
 ######################################################
 # remove Cloudlab created automatically added routes
 ######################################################
-iface1=$(ifconfig | grep -B1 "inet 192.168.3.1 | head -n1 | cut -f1 -d:)
+iface1=$(ifconfig | grep -B1 "inet 192.168.3.1" | head -n1 | cut -f1 -d:)
 iface2=$(ifconfig | grep -B1 "inet 192.168.4.1" | head -n1 | cut -f1 -d:)
 ifaceC=$(ifconfig | grep -B1 "inet " | head -n1 | cut -f1 -d:) 
 
