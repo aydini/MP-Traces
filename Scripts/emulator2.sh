@@ -8,3 +8,6 @@ sudo ifconfig $ifacetoS down; sudo ifconfig $ifacetoS up
 
 # add the new routes manually 
 sudo route add -net 192.168.4.0/24 gw 192.168.2.2
+
+# Introduce delay to the server link at the emulator 
+sudo tc qdisc replace dev $ifacetoS root netem delay 30ms limit 60000
