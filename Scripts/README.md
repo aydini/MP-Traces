@@ -8,7 +8,7 @@ add source of picture...
 
 # Setup Cloudlab topology and configure nodes
 
-Use the Cloudlab profile **mptcp-auto** which is configured to "Execute Commands" from each cloudlab node to (1) clone this Github repo, and (2) auto-run the node script when the profile is instantiated.
+Use the Cloudlab profile **mptcp-auto** which is configured to autimatically "Execute Commands" from each cloudlab node at instantiation to (1) clone this Github repo, and (2) auto-run the corresponding node script.
 
 After instantiating the profile, test it by running iperf at client and server and observing that the data traffic is about the total capacity of both paths between client and server
 
@@ -21,7 +21,7 @@ At the client run
 ```
 iperf3 -f m -c 192.168.3.1 -C "balia" -P 1 -i 1 -t 200
 ```
-a sample iperf session output at the client is below
+a sample iperf session output at the client is below. Note that MPTCP is selcted by specifying a MPTCP CC algorithm 'balia'. You should see the bandwidth to be close tot he total capacity of both paths.  
 ```
 aydini1@client:~$ iperf3 -f m -c 192.168.3.1 -C "balia" -P 1 -i 1 -t 200
 Connecting to host 192.168.3.1, port 5201                               
