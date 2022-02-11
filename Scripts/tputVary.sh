@@ -9,6 +9,9 @@ ifacetoS=$(ifconfig | grep -B1 "inet 192.168.3.2\|inet 192.168.4.2" | head -n1 |
 while true; do
 cat "$1" | tr -d '\r' | while IFS=, read -r t tput # t for time
 do
+        if [ "$tput" = "0" ] ; then
+                tput=100
+        fi
         tputkbit=$( bc <<< "scale=2; $tput/1000*8" )        
         echo $tputkbit
         cmd="sudo tc class replace dev $ifacetoS parent 1: classid 1:3 htb rate ${tputkbit}kbit" 
