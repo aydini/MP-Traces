@@ -9,7 +9,7 @@ ifacetoS=$(ifconfig | grep -B1 "inet 192.168.3.2\|inet 192.168.4.2" | head -n1 |
 while true; do
   tputmbit=$(python3 -c "import random; print(random.gauss($1, $2))")
   tputkbit=$( bc <<< "scale=2; $tputmbit*1000" )   
-  if [ "$tputkbit" -le "0" ] ; then
+  if (( $(echo "0 > $tputkbit" |bc -l) )); then  
     tputkbit=1
   fi
             
