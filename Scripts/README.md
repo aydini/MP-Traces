@@ -43,3 +43,5 @@ Connecting to host 192.168.3.1, port 5201
 [  4]  13.00-14.00  sec  22.5 MBytes   189 Mbits/sec    0   14.1 KBytes 
 [  4]  14.00-15.00  sec  22.5 MBytes   189 Mbits/sec    0   14.1 KBytes 
 ```
+
+# Test Bulk transfer between client and server using the trace data
