@@ -2,6 +2,7 @@
 sudo apt update
 sudo apt -y install iperf3
 sudo apt -y install moreutils
+sudo apt -y install apache2
 
 # run sysctl commands to enable mptcp
 sudo sysctl -w net.mptcp.mptcp_enabled=1 
@@ -49,3 +50,7 @@ sudo ip route add 192.168.20.0/24 dev $iface2 scope link table 2
 sudo ip route add 192.168.3.0/24 via 192.168.10.1 dev $iface1 table 1 
 sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 
+# mirror (copy)the web sites into client (that will act as web server for the web browsing traffic experiments)
+cd /var/www/html/
+sudo wget -e robots=off --wait 1 -H -p -k http://engineering.nyu.edu/
+sudo wget -e robots=off --wait 1 -H -p -k http://reddit.com
