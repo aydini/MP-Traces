@@ -53,4 +53,3 @@ sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 # mirror (copy)the web sites into client (that will act as web server for the web browsing traffic experiments)
 cd /var/www/html/
 sudo wget -e robots=off --wait 1 -H -p -k http://engineering.nyu.edu/
-sudo wget -e robots=off --wait 1 -H -p -k http://reddit.com
