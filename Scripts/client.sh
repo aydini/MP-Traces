@@ -2,7 +2,7 @@
 sudo apt update
 sudo apt -y install iperf3
 sudo apt -y install moreutils
-sudo apt -y install apache2
+sudo apt -y install apache2 # install for the web browsing experiments where client will act as the web server
 
 # run sysctl commands to enable mptcp
 sudo sysctl -w net.mptcp.mptcp_enabled=1 
