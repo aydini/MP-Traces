@@ -50,7 +50,10 @@ sudo ip route add 192.168.20.0/24 dev $iface2 scope link table 2
 sudo ip route add 192.168.3.0/24 via 192.168.10.1 dev $iface1 table 1 
 sudo ip route add 192.168.4.0/24 via 192.168.20.1 dev $iface2 table 2
 
-# mirror (copy)the web sites into client (that will act as web server for the web browsing traffic experiments)
+# for web briwsing traffi experiments: mirror (copy) the following list of the web sites into client that will act as the web server
 cd /var/www/html/
 sudo wget -e robots=off --wait 1 -H -p -k http://engineering.nyu.edu/
 sudo wget -e robots=off --wait 1 -H -p -k http://reddit.com/
+sudo wget -e robots=off --wait 1 -H -p -k http://facebook.com/  
+sudo wget -e robots=off --wait 1 -H -p -k http://youtube.com/  
+sudo wget -e robots=off --wait 1 -H -p -k http://www.mlb.com/mets  
