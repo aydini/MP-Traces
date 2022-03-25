@@ -9,10 +9,7 @@ while true; do
 for url in {'engineering.nyu.edu','reddit.com','weather.com','youtube.com','farmingdale.edu'}; do                                                                        
         let counter=$counter+1
 	echo "$counter $(date)"
-	outputFile="${counter}_${1}"
-	# last part of wget output
-        #       Total wall clock time: 5.2s
-        # output line format is: url,timeInSeconds
+	outputFile="${counter}_${1}"	
         wget -o "${dir}${outputFile}" -p "http://${ip}/${url}/" &
         sleep 10
 done                                                                                                            
