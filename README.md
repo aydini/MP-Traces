@@ -1,6 +1,7 @@
 # MP-Traces
 
-Repository by Ilknur
+Repository by Ilknur.
+This READMe explains how to use GENI testbed to collect trace pair data for WiFi and Cellular links. 
 
 ## Set up a webserver
 
