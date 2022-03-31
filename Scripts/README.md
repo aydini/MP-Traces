@@ -1,4 +1,4 @@
-The Cloudlab topology below will the trace pair data collected (using GENI testbed) for mptcp experiments
+The Cloudlab topology below uses the trace pair data collected (using GENI testbed) for mptcp experiments
 
 # Cloudlab Topology
 
