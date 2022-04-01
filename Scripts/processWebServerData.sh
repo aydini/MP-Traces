@@ -1,6 +1,8 @@
+# usage
+# processWebServerDat.sh  rawWebBrowsingDataFolderName  > outputFileName
 dir=$1 # don't end with /
 files=`ls $dir`
-echo "file,path,counter,url,downloadTime"
+echo "filename,path,counter,url,downloadTime"
 for f in $files; do
   file="$dir/$f"
   clockTime=`grep  "clock time" $file | awk '{print $5 $6}'| tr -d 's'`
