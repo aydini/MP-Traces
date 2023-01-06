@@ -7,3 +7,6 @@
   * path 11: SBU East side Dining Hall indoor walk from Pizza V. to Tool Rd Deli (WiFi can vary or not)
   * path 12: SBU outdoor bench across Psych A bldg to indoors library right outside central reading room (WiFi should get stronger)
   * path 13: walk starting at SBU music building outdoor right across the art building to inside the first floor of music building, make right to go down stairs to the basement of music building (cellular should get weaker)
+
+
+![image](https://user-images.githubusercontent.com/2316553/211050968-094fadfd-cad8-472e-b58e-cb1fae98cda1.png)
