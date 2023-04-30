@@ -8,7 +8,7 @@
 FLAG_GET_PER_TCP_STREAM_PCAP=0 # 1(true)
 FLAG_GET_CSV_FILES=1 # 1(true)
 dir=/mnt/mpTraceFiles #.pcap file director, put no ending /
-serverIP="199.109.64.50"
+serverIP=$(ip route get 8.8.8.8 | awk '{print $7}' | head -n 1)
         
 if [ $# -lt 1 ]
 then
