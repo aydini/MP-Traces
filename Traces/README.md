@@ -1,7 +1,6 @@
-## Trace description
+## Trace description for Trace Files collected in SBU
 
-* This folder contains the trace pairs (wifi and cellular link data at the same time and space) collected in Stony Brook University (SBU), in New York. 
-* The trace file name format is pathID_trial_network.csv
+* This folder contains the trace pairs (wifi and cellular link data at the same time and space) collected in Stony Brook University (SBU), in New York for paths with ID < 21.
 * Each trace file has a CSV format timeInSeconds,ByesPerSecond where timeInSeconds is the range of [1:100]
 * Explanation for pathIDs
   * path 7: SBU walk SAC side door to the bus stop (WiFi should get weaker)
@@ -11,6 +10,9 @@
   * path 13: walk starting at SBU music building outdoor right across the art building to inside the first floor of music building, make right to go down stairs to the basement of music building (cellular should get weaker)
 
 ![SBUPathsAnnotated](https://user-images.githubusercontent.com/2316553/211053414-047d7cc5-26df-4487-837f-bc40b30e6904.png)
+
+## Trace description for Trace Files collected at Farmingdale State College
+* Trace files with pathID 21, 22, and 23 are collected at Farmingdale State College
 
 ## Trace visualization and statistics
 
