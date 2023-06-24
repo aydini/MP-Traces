@@ -11,12 +11,13 @@
 
 ![SBUPathsAnnotated](https://user-images.githubusercontent.com/2316553/211053414-047d7cc5-26df-4487-837f-bc40b30e6904.png)
 
-### Trace visualization and statistics
+### Trace visualization and statistics collected at SBU
 
 ![image](https://user-images.githubusercontent.com/2316553/211050968-094fadfd-cad8-472e-b58e-cb1fae98cda1.png)
 
 A Python notebook with summary statistics of each trace pair is available at the following link: https://colab.research.google.com/drive/14-OClGxWto5T_hfrjxkzlxvn1PXcTFNL
 
-## Trace description for Trace Files collected at Farmingdale State College
-* Trace files with pathID 21, 22, and 23 are collected at Farmingdale State College
+## Trace description for Trace Files collected at FSC
+* These are the trace files numbered with path ID 21, 22, 23 from spring 2023 csc 499 research students at FSC
+* details about paths are provided [this public](https://github.com/aydini/Multipath-Wireless-Link-Traces) repo originally created for cnert 2023 paper for the traces
 
